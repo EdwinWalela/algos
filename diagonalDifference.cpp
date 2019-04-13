@@ -17,13 +17,13 @@ int main(void){
     int n;
     cin>>n;
 
-   vector<vector<int>> arr(n);
-   for(int i = 0 ; i < n; i++){
-       arr[i].resize(n);
-       for(int j = 0; j < n; j++){
-           cin>>arr[i][j];
-       }
-   }
+    vector<vector<int>> arr(n);
+    for(int i = 0 ; i < n; i++){
+        arr[i].resize(n);
+        for(int j = 0; j < n; j++){
+            cin>>arr[i][j];
+        }
+    }
 
     diagDiff(arr);
     return 1;
