@@ -1,4 +1,8 @@
  #include <iostream>
+ #include <vector>
+ #include <algorithm>
+ #include <string>
+
 using namespace std;
  
 // Binary Search Recursively
@@ -9,7 +13,7 @@ using namespace std;
 //           M 
 
 
-int binarySearchRecursive(int arr[],int x,int left,int right){
+int binarySearchRecursive(vector<int> arr,int x,int left,int right){
      if(left>right){
          return -1;
      }
@@ -23,9 +27,9 @@ int binarySearchRecursive(int arr[],int x,int left,int right){
     }
 }
 
-int binarySearchIterative(int arr[],int x,int n){
+int binarySearchIterative(vector<int>arr,int x){
      int left = 0;;
-     int right = n-1;
+     int right = arr.size() - 1;
 
     while(left <= right){
         int mid = (left + right ) / 2;
@@ -40,28 +44,40 @@ int binarySearchIterative(int arr[],int x,int n){
     return -1;
 }
 
-void printArray(int arr[],int length){
+void printArray(vector<int> arr){
     cout<<"array : [ ";
-     for (int i = 0; i < length; i++){
-         i != length-1 ? cout<<arr[i]<<" , " : cout<<arr[i]; 
-        
+     for (int i = 0; i < arr.size(); i++){
+         i != arr.size()-1 ? cout<<arr[i]<<" , " : cout<<arr[i]; 
      } 
      cout<<" ] "<<endl;
+      cin.ignore(255,'\n');
+}
+
+vector<int> populateArray(){
+    cout<<"Enter elements (Ctrl + Z to signal end of input) : \n";
+    vector<int> arr;
+    while(!cin.eof()){
+        int x;
+        cin>>x;
+        arr.push_back(x);
+    }
+
+    arr.pop_back();
+    return arr;
 }
 
  int main(void){
-     int arr[]{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17}; int x,index;
-     size_t arrLength = sizeof(arr) / sizeof(arr[0]);
+     int x = 7;int index;
+     vector<int>arr = populateArray();
+     sort(arr.begin(),arr.end());
+     printArray(arr);
 
-     printArray(arr,arrLength);
+     index = binarySearchIterative(arr,x);
 
-     cout<<"\nEnter number to search for: ";
-     cin>>x;
-     index =  binarySearchIterative(arr,x,arrLength);
      if(index != -1){
-        cout<<"\n"<<x<<" is at index : "<<index<<endl;
+         cout<<"Element ("<<x<<")"<<" found at index : [ "<<index<<" ]"<<endl;
      }else{
-        cout<<"\n"<<x<<" not found"<<endl;
+         cout<<"Element ("<<x<<")"<<" not found"<<endl;
      }
      return 1;
  }
