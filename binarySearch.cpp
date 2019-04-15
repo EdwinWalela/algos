@@ -67,7 +67,9 @@ vector<int> populateArray(){
 }
 
  int main(void){
-     int x = 7;int index;
+     int x ;int index;
+     cout<<"Enter element to search: ";
+     cin>>x;
      vector<int>arr = populateArray();
      sort(arr.begin(),arr.end());
      printArray(arr);
