@@ -61,7 +61,6 @@ vector<int> populateArray(){
         cin>>x;
         arr.push_back(x);
     }
-
     arr.pop_back();
     return arr;
 }
