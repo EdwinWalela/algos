@@ -1,2 +1,6 @@
 *.exe
+b.cpp
+A.cpp
+pointers*
 .vscode
+/class
